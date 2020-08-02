@@ -1,0 +1,98 @@
+ <!-- <div class="container-fluid">
+    <nav class="navbar  navbar-dark bg-dark">
+         <div > 
+             <div class="navbar-header"> 
+                <a class="navbar-brand" href="#">DashBoard</a>
+                <ul class="nav navbar-nav">
+                    <li class="active nav-item"><a routerLink="addproperty">Add-Property</a></li>
+                    <li class="nav-item"><a routerLink="payment">Payment</a></li>
+
+                </ul>
+             </div> 
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="authService!==null">
+                    <a class="text-white">{{authService.authName}}</a>
+                </li>
+                <li>
+                    <a (click)="authService.logout()" style="color: antiquewhite;">
+                        <i class="fa fa-google" aria-hidden="true"></i>
+                        Logout</a>
+                </li>
+            </ul>
+         </div> 
+    </nav>
+<div>   -->
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      
+        <a class="navbar-brand" href="#">DashBoard</a>
+      
+   
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+
+        <div class="collapse navbar-collapse " id="collapsibleNavbar" >
+          <ul class="navbar-nav  ">           
+             <li class=" nav-item"><a class="nav-link" routerLink="/addproperty">Add-Property</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/payment">Payment</a></li>
+            </ul>
+            <ul class="navbar-nav navbar-right ml-auto">
+                <li *ngIf="authService!==null">
+                    <a class="text-white">{{authService.authName}}</a>
+                </li>
+                <li>
+                    <a (click)="authService.logout()" style="color: antiquewhite;">
+                        <i class="fa fa-google" aria-hidden="true"></i>
+                        Logout</a>
+                </li>
+            </ul>
+          
+        </div>
+      </nav> 
+      <br> 
+      <!-- <div>
+        <button><a style="text-decoration: none;" routerLink="/addproperty">ADD Property</a></button>
+      </div> -->
+      <div class="container">
+        <div class="row">
+          <div class="card-deck" *ngFor="let p of details">
+            <mat-card class="example-card mr-5">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{authService.authName}}</mat-card-title>
+                <mat-card-subtitle>{{p.payload.val()["tenantproperty"]}}</mat-card-subtitle>
+              </mat-card-header >
+              <img mat-card-image src="{{p.payload.val()['imageurl']}} " alt="Photo of a Shiba Inu">
+              <mat-card-content>
+              <p> Address  :{{p.payload.val()["location"]}}</p>
+              <p> Rent  :{{p.payload.val()["rent"]}}</p>
+              <p> Lease Time  :{{p.payload.val()["leasetime"]}}</p>
+            
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>Edit</button>
+                <button mat-button (click)="remove(p.key)">Remove</button>
+              </mat-card-actions>
+            </mat-card>
+            
+          </div>
+     
+        </div>
+      </div>
+    
+
+
+    <div>
+     <img [src]="(featuredPhotoStream|async)?.imageurl" >
+    </div>
+  <!-- <div class="panel panel-primary">
+        <div class="panel-heading">List of Images</div>
+        <div *ngFor="let file of fileUploads">
+          <div class="panel-body">
+            <details-upload [fileUpload]='file'></details-upload>
+          </div>
+        
+        </div>
+      </div> -->
